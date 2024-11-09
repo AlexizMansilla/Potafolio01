@@ -10,4 +10,3 @@ Me llamo **Alexis Mansilla** y soy un desarrollador web con una pasión por crea
 
 ### Proyecto 1: Sistema de Gestión de Inventarios
 - **Descripción**: Una aplicación web para gestionar inventarios de una empresa de manera eficiente.
-- **Tecnologías**: React
