@@ -48,7 +48,7 @@ html{
     color: #1CB698;
 }
 .nav-responsive{
-    background-color: #1CB698;
+    background-color: #3b1cb6;
     color:#fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -75,7 +75,7 @@ html{
 }
 .inicio .contenido-banner img{
     margin-top: 40px;
-    border: 10px solid #1CB698;
+    border: 10px solid #b713aa;
     display: block; margin-left: auto; margin-right: auto; width: 50%;
     border-radius: 100%;
 }
