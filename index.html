@@ -1,14 +1,739 @@
 <!DOCTYPE html>
 <html lang="es-mx">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Portafolio</title>
-    
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Portafolio - Alexis Mansilla</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Work+Sans:wght@100;300;400;600;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Work Sans';
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* MENU */
+        .contenedor-header {
+            background: #1e2326;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+
+        .contenedor-header header {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .contenedor-header header .logo a {
+            font-family: 'Righteous';
+            font-size: 36px;
+            color: #1CB698;
+            text-decoration: none;
+        }
+
+        .contenedor-header header ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .contenedor-header header nav ul li a {
+            text-align: none;
+            color: #fff;
+            margin: 0 15px;
+            padding: 3px;
+            transition: .5s;
+            text-decoration: none;
+        }
+
+        .contenedor-header header nav ul li a:hover {
+            color: #1CB698;
+        }
+
+        .nav-responsive {
+            background-color: #1CB698;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* SECCION INICIO */
+        .inicio {
+            background: linear-gradient(to top, rgba(30, 35, 38, .8), rgba(30, 35, 38, 1)),
+                url(https://potafolio01.vercel.app/img/fondo.jpg);
+            background-size: cover;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .inicio .contenido-banner {
+            padding: 20px;
+            background-color: #1e2326;
+            max-width: 350px;
+            margin: auto;
+            text-align: center;
+            border-radius: 40px;
+        }
+
+        .inicio .contenido-banner img {
+            margin-top: 40px;
+            border: 10px solid #1CB698;
+            display: block;
+            width: 80%;
+            margin: auto;
+            border-radius: 100%;
+        }
+
+        .inicio .contenido-banner h1 {
+            margin-top: 40px;
+            font-size: 42px;
+            font-family: 'Righteous';
+        }
+
+        .inicio .contenido-banner h2 {
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .inicio .contenido-banner .redes a {
+            color: #fff;
+            display: inline-block;
+            text-decoration: none;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            margin: 40px 5px;
+            font-size: 20px;
+            transition: .3s;
+        }
+
+        .inicio .contenido-banner .redes a:hover {
+            background-color: #1CB698;
+        }
+
+        .sobremi {
+            background-color: #1e2326;
+            color: #fff;
+            padding: 50px 20px;
+        }
+
+        .sobremi .contenido-seccion {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .sobremi h2 {
+            font-size: 48px;
+            font-family: 'Righteous';
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .sobremi .contenido-seccion p {
+            font: 18px;
+            line-height: 22px;
+            margin-bottom: 20px;
+        }
+
+        .sobremi .contenido-seccion p span {
+            color: #1CB698;
+            font-weight: bold;
+        }
+
+        .sobremi .fila {
+            display: flex;
+        }
+
+        .sobremi .fila .col {
+            width: 50%;
+        }
+
+        .sobremi .fila .col h3 {
+            font-size: 28px;
+            font-family: 'Righteous';
+            margin-bottom: 25px;
+        }
+
+        .sobremi .fila .col ul {
+            list-style: none;
+        }
+
+        .sobremi .fila .col ul li {
+            margin: 12px 0;
+        }
+
+        .sobremi .fila .col ul li strong {
+            display: inline-block;
+            color: #1CB698;
+            width: 130px;
+        }
+
+        .sobremi .fila .col ul li span {
+            background-color: #1CB698;
+            padding: 3px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .sobremi .fila .col .contenedor-intereses {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .sobremi .fila .col .contenedor-intereses .interes {
+            width: 100px;
+            height: 100px;
+            background-color: #252A2E;
+            border-radius: 10px;
+            margin: 0 15px 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: .3s;
+        }
+
+        .sobremi .fila .col .contenedor-intereses .interes:hover {
+            background-color: #1CB698;
+        }
+
+        .sobremi .fila .col .contenedor-intereses .interes i {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .sobremi button {
+            cursor: pointer;
+            background-color: transparent;
+            border: 2px solid #fff;
+            width: fit-content;
+            display: block;
+            margin: 20px auto;
+            padding: 10px 22px;
+            font-size: 16px;
+            color: #fff;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sobremi button .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #1CB698;
+            z-index: -1;
+            transition: 1s;
+        }
+
+        .sobremi button:hover .overlay {
+            width: 100%;
+        }
+
+        .curriculum {
+            background-color: #252A2E;
+            color: #fff;
+            padding: 50px 20px;
+        }
+
+        .curriculum .contenido-seccion {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .curriculum h2 {
+            font-size: 48px;
+            font-family: 'Righteous';
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .curriculum .fila {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .curriculum .fila .col {
+            width: 49%;
+            padding: 0 20px;
+        }
+
+        .curriculum .fila .col h3 {
+            font-size: 28px;
+            font-family: 'Righteous';
+            margin-bottom: 25px;
+        }
+
+        .curriculum .fila .izquierda {
+            border-right: 2px solid #252A2E;
+        }
+
+        .curriculum .fila .derecha {
+            border-left: 2px solid #252A2E;
+        }
+
+        .curriculum .fila .item {
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #1e2326;
+            position: relative;
+        }
+
+        .curriculum .fila .item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .curriculum .fila .item .casa {
+            color: #1CB698;
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .curriculum .fila .item .fecha {
+            display: block;
+            color: #1CB698;
+            margin-bottom: 10px;
+        }
+
+        .curriculum .fila .item p {
+            line-height: 24px;
+        }
+
+        .curriculum .fila .izq {
+            border-right: 2px solid #1CB698;
+            margin-right: 20px;
+        }
+
+        .curriculum .fila .der {
+            border-left: 2px solid #1CB698;
+            margin-left: 20px;
+        }
+
+        .curriculum .fila .item .conectori {
+            height: 2px;
+            background-color: #1CB698;
+            width: 47px;
+            position: absolute;
+            top: 50%;
+            right: -47px;
+            z-index: 5;
+        }
+
+        .curriculum .fila .item .conectori .circuloi {
+            display: block;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #1CB698;
+            float: right;
+            position: relative;
+            bottom: 4px;
+        }
+
+        .curriculum .fila .item .conectord {
+            height: 2px;
+            background-color: #1CB698;
+            width: 47px;
+            position: absolute;
+            top: 50%;
+            left: -47px;
+            z-index: 5;
+        }
+
+        .curriculum .fila .item .conectord .circulod {
+            display: block;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #1CB698;
+            float: left;
+            position: relative;
+            bottom: 4px;
+        }
+
+        .portafolio {
+            background-color: #1e2326;
+            color: #fff;
+            padding: 50px 20px;
+        }
+
+        .portafolio .contenido-seccion {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .portafolio h2 {
+            font-size: 48px;
+            font-family: 'Righteous';
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .portafolio .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .portafolio .galeria .proyecto {
+            position: relative;
+            max-width: 340px;
+            height: fit-content;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .portafolio .galeria .proyecto img {
+            width: 100%;
+            display: block;
+        }
+
+        .portafolio .galeria .proyecto .overlay {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: linear-gradient(rgba(28, 182, 152, .8), rgba(28, 182, 152, .8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: 1s;
+            font-size: 18px;
+            letter-spacing: 3px;
+            opacity: 0;
+        }
+
+        .portafolio .galeria .proyecto .overlay h3 {
+            margin-bottom: 20px;
+            transition: 1s;
+        }
+
+        .portafolio .galeria .proyecto .overlay:hover {
+            opacity: 1;
+        }
+
+        .portafolio .galeria .proyecto .overlay:hover h3 {
+            margin-bottom: 0px;
+        }
+
+        /* SECCION CONTACTO - NUEVO DISEÑO */
+        .contacto {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 80px 20px;
+        }
+
+        .contacto .contenido-seccion {
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .contacto h2 {
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 48px;
+            font-family: 'Righteous';
+            text-align: center;
+            padding: 20px 0;
+            letter-spacing: 8px;
+            margin-bottom: 40px;
+        }
+
+        .contacto .fila {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contacto .col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contacto .col input,
+        .contacto .col textarea {
+            width: 100%;
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+            font-family: 'Work Sans';
+        }
+
+        .contacto .col input::placeholder,
+        .contacto .col textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .contacto .col input:focus,
+        .contacto .col textarea:focus {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: #1CB698;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(28, 182, 152, 0.15);
+        }
+
+        .contacto .col textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contacto button {
+            background: linear-gradient(135deg, #1CB698 0%, #17a085 100%);
+            color: white;
+            padding: 20px 45px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(28, 182, 152, 0.3);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .contacto button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contacto button:hover::before {
+            left: 100%;
+        }
+
+        .contacto button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(28, 182, 152, 0.4);
+        }
+
+        .contacto button .overlay {
+            display: none;
+        }
+
+        .contacto .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 500px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contacto .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.95) contrast(1.05);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: -15px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        input.error,
+        textarea.error {
+            border-color: #ff6b6b !important;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #252A2E;
+            color: #fff;
+            padding: 50px 0 30px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer img {
+            width: 100px;
+            margin: 20px 0;
+        }
+
+        footer .redes {
+            margin-bottom: 20px;
+        }
+
+        footer .redes a {
+            color: #fff;
+            display: inline-block;
+            text-decoration: none;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            margin: 10px 5px;
+            font-size: 20px;
+            transition: .3s;
+        }
+
+        footer .redes a:hover {
+            background-color: #1CB698;
+        }
+
+        footer .arriba {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #1CB698;
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -25px;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 18px;
+            transition: .3s;
+        }
+
+        footer .arriba:hover {
+            background-color: #252A2E;
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 980px) {
+            .nav-responsive {
+                display: block;
+            }
+
+            .contenedor-header header nav {
+                position: fixed;
+                width: 100%;
+                right: -100%;
+                top: 75px;
+                background-color: #252A2E;
+                padding: 10px 0;
+                z-index: 99;
+                opacity: 0;
+                transition: all .5s;
+            }
+
+            .contenedor-header header nav.responsive {
+                right: 0;
+                opacity: 1;
+            }
+
+            .contenedor-header header nav ul {
+                flex-direction: column;
+            }
+
+            .contenedor-header header nav ul li {
+                border-bottom: 1px solid #fff;
+                padding: 10px 0;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            .sobremi .fila {
+                display: block;
+            }
+
+            .sobremi .fila .col {
+                width: fit-content;
+            }
+
+            .curriculum .fila {
+                display: block;
+            }
+
+            .curriculum .fila .col {
+                width: 90%;
+            }
+
+            .curriculum .fila .derecha {
+                margin-left: 20px;
+            }
+
+            .portafolio .galeria {
+                display: block;
+                width: 100%;
+            }
+
+            .portafolio .galeria .proyecto {
+                max-width: 100%;
+            }
+
+            .contacto .fila {
+                display: block;
+                padding: 40px 30px;
+            }
+
+            .contacto .map-container {
+                min-height: 350px;
+                margin-top: 30px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- MENU ENCABEZADO -->
     <div class="contenedor-header">
@@ -35,17 +760,17 @@
     <section id="inicio" class="inicio">
         <div class="contenido-banner">
             <div class="contenedor-img">
-                <img src="img/alexis-png.jpeg" alt="imagen">
+                <img src="https://potafolio01.vercel.app/img/alexis-png.jpeg" alt="Alexis Mansilla">
             </div>
             <h1>Alexis Mansilla</h1>
-            <h2 class="enlaces__link">Principiante en programacion-Futuro Experto </h2>
+            <h2 class="enlaces__link">Principiante en programacion-Futuro Experto</h2>
             <div class="redes">
                 <a href="https://www.instagram.com/dereckstonilich/"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://github.com/AlexizMansilla"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/alexis-mansilla-656aa8313/"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://m.facebook.com/profile.php?id=61566348713672"><i class="fa-brands fa-facebook-f"></i></a>
-                
-
+                <a href="https://www.linkedin.com/in/alexis-mansilla-656aa8313/"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://m.facebook.com/profile.php?id=61566348713672"><i
+                        class="fa-brands fa-facebook-f"></i></a>
             </div>
         </div>
     </section>
@@ -54,8 +779,9 @@
     <section id="sobremi" class="sobremi">
         <div class="contenido-seccion">
             <h2>Sobre Mí</h2>
-            <p><span>Mi nombre es Alexis Mansilla</span> te doy la bienvenida. Explora mis proyectos y descubre cómo la pasión y la dedicación se transforman en resultados.
-            ¡Acompáñame en este viaje creativo!</p>
+            <p><span>Mi nombre es Alexis Mansilla</span> te doy la bienvenida. Explora mis proyectos y descubre cómo la
+                pasión y la dedicación se transforman en resultados.
+                ¡Acompáñame en este viaje creativo!</p>
 
             <div class="fila">
                 <!-- datos personales -->
@@ -74,7 +800,7 @@
                             <strong>Website</strong>
                             https://github.com/AlexizMansilla
                         </li>
-                </ul>
+                    </ul>
                 </div>
 
                 <!-- intereses -->
@@ -94,7 +820,7 @@
                             <span>VIAJAR</span>
                         </div>
                         <div class="interes">
-                        <i class="fa-brands fa-windows fa-fade"></i>
+                            <i class="fa-brands fa-windows fa-fade"></i>
                             <span>WINDOWS</span>
                         </div>
                         <div class="interes">
@@ -113,7 +839,6 @@
                             <i class="fa-solid fa-camera fa-fade"></i>
                             <span>FOTOS</span>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -125,50 +850,57 @@
     </section>
 
     <!-- SECCION CURRICULUM -->
-        <section id="curriculum" class="curriculum">
-            <div class="contenido-seccion">
-                <h2>Curriculum</h2>
-                <div class="fila">
-                    <div class="col izquierda">
-                        <h3>Educación</h3>
-                        <div class="item izq">
-                            <h4>Educación Básica</h4>
-                            <span class="casa"> Centro Educacional Colegio San Nicolas.</span>
-                            <span class="fecha">2009 - 2010</span>
-                            <p>Proyecto Educativo
-                            El Centro Educativo San Nicolás imparte enseñanza de Educación Parvularia, Educación Básica y Educación Media
-                            Humanista-Científica con Jornada Escolar Completa en todos los niveles de enseñanza. Entrega además Educación Media
+    <section id="curriculum" class="curriculum">
+        <div class="contenido-seccion">
+            <h2>Curriculum</h2>
+            <div class="fila">
+                <div class="col izquierda">
+                    <h3>Educación</h3>
+                    <div class="item izq">
+                        <h4>Educación Básica</h4>
+                        <span class="casa"> Centro Educacional Colegio San Nicolas.</span>
+                        <span class="fecha">2009 - 2010</span>
+                        <p>Proyecto Educativo
+                            El Centro Educativo San Nicolás imparte enseñanza de Educación Parvularia, Educación Básica
+                            y Educación Media
+                            Humanista-Científica con Jornada Escolar Completa en todos los niveles de enseñanza. Entrega
+                            además Educación Media
                             Humanista Científica para Jóvenes y Adultos en jornada Vespertina.</p>
-                            <div class="conectori">
+                        <div class="conectori">
                             <div class="circuloi"></div>
-                            </div>
-                        </div>
-                        <div class="item izq">
-                            <h4>Científica Humanista</h4>
-                            <span class="casa">Centro de Educación de Adultos Sandrock.</span>
-                            <span class="fecha">2009 - 2010</span>
-                            <p>Proyecto Educativo Institucional
-                                ¿QUÉ ES UN PROYECTO EDUCATIVO INSTITUCIONAL?
-                                “Es dibujar el mapa por el que una Comunidad Educativa debe caminar para hacer realidad un futuro.”
-                                Nuestra intención es trazar un camino propio a mediano y largo plazo, basado en el resultado de un trabajo de
-                                diálogo y reflexión constante, producto de la aspiración compartida de la comunidad educativa superando la idea de
-                                “competitividad” entre nosotros por la de “comunidad competente”, buscando la verdad y no las verdades individuales.</p>
-                            <div class="conectori">
-                                <div class="circuloi"></div>
-                            </div>
-                        </div>
-                        <div class="item izq">
-                            <h4>Diseñador web, Front-End</h4>
-                            <span class="casa">Alura Latam</span>
-                            <span class="fecha">2024 - 2025</span>
-                            <p>Cursos de
-                                Front End Desarrolla sitios web y aplicaciones web con HTML, CSS y JavaScript. Aprende buenas prácticas, las últimas versiones
-                                de JavaScript y estudia herramientas y frameworks de mercado.</p>
-                            <div class="conectori">
-                                <div class="circuloi"></div>
-                            </div>
                         </div>
                     </div>
+                    <div class="item izq">
+                        <h4>Científica Humanista</h4>
+                        <span class="casa">Centro de Educación de Adultos Sandrock.</span>
+                        <span class="fecha">2009 - 2010</span>
+                        <p>Proyecto Educativo Institucional
+                            ¿QUÉ ES UN PROYECTO EDUCATIVO INSTITUCIONAL?
+                            "Es dibujar el mapa por el que una Comunidad Educativa debe caminar para hacer realidad un
+                            futuro."
+                            Nuestra intención es trazar un camino propio a mediano y largo plazo, basado en el resultado
+                            de un trabajo de
+                            diálogo y reflexión constante, producto de la aspiración compartida de la comunidad
+                            educativa superando la idea de
+                            "competitividad" entre nosotros por la de "comunidad competente", buscando la verdad y no
+                            las verdades individuales.</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                    <div class="item izq">
+                        <h4>Diseñador web, Front-End</h4>
+                        <span class="casa">Alura Latam</span>
+                        <span class="fecha">2024 - 2025</span>
+                        <p>Cursos de
+                            Front End Desarrolla sitios web y aplicaciones web con HTML, CSS y JavaScript. Aprende
+                            buenas prácticas, las últimas versiones
+                            de JavaScript y estudia herramientas y frameworks de mercado.</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col derecha">
                     <h3>Experiencia de trabajo</h3>
@@ -176,9 +908,11 @@
                         <h4>Operador en despacho</h4>
                         <span class="casa">Cecinas Pacel</span>
                         <span class="fecha">2010 - 2011</span>
-                        <p>Cecinas Pacel es una empresa familiar de origen Valdiviano y raíces de ancestros rusos con una rica tradición de 45 años
-                        en la producción de cecinas y embutidos artesanales. Hoy nos enorgullece ser el principal productor de cecinas de
-                        Valdivia y de la región de los ríos.</p>
+                        <p>Cecinas Pacel es una empresa familiar de origen Valdiviano y raíces de ancestros rusos con
+                            una rica tradición de 45 años
+                            en la producción de cecinas y embutidos artesanales. Hoy nos enorgullece ser el principal
+                            productor de cecinas de
+                            Valdivia y de la región de los ríos.</p>
                         <div class="conectord">
                             <div class="circulod"></div>
                         </div>
@@ -196,26 +930,32 @@
                         <h4>Ayudante de laboratorio</h4>
                         <span class="casa">Hormitec</span>
                         <span class="fecha">2015 - 2017</span>
-                        <p>Hormitec laboratorio es un organismo de evaluación de la conformidad (OEC), que desarrolla Control Técnico de Materiales
-                        para Obras de Construcción, a través de la toma de muestras, ensayos de laboratorio y ensayos en terreno, con cobertura
-                        en toda la región de los Lagos y Región de los Ríos.</p>
+                        <p>Hormitec laboratorio es un organismo de evaluación de la conformidad (OEC), que desarrolla
+                            Control Técnico de Materiales
+                            para Obras de Construcción, a través de la toma de muestras, ensayos de laboratorio y
+                            ensayos en terreno, con cobertura
+                            en toda la región de los Lagos y Región de los Ríos.</p>
                         <div class="conectord">
                             <div class="circulod"></div>
                         </div>
-                        
-                        </div>
-                        <div class="item der">
-                            <h4>Atención al cliente Redes Sociales</h4>
-                            <span class="casa">Atento Chile</span>
-                            <span class="fecha">2022 - 2024</span>
-                            <p>Empresa contratista para GTD. Especializado en redes sociales, con experiencia en retención de clientes y asistencia técnica remota. Enfocado en
-                            brindar una atención comercial personalizada y efectiva, resolviendo inquietudes y necesidades de los usuarios de
-                            manera rápida y profesional. Hábil en la gestión de interacciones en plataformas digitales, con un enfoque en mejorar la
-                            satisfacción del cliente, fidelizar y construir relaciones a largo plazo, mientras soluciona problemas técnicos de forma
+                    </div>
+                    <div class="item der">
+                        <h4>Atención al cliente Redes Sociales</h4>
+                        <span class="casa">Atento Chile</span>
+                        <span class="fecha">2022 - 2024</span>
+                        <p>Empresa contratista para GTD. Especializado en redes sociales, con experiencia en retención
+                            de clientes y asistencia técnica remota. Enfocado en
+                            brindar una atención comercial personalizada y efectiva, resolviendo inquietudes y
+                            necesidades de los usuarios de
+                            manera rápida y profesional. Hábil en la gestión de interacciones en plataformas digitales,
+                            con un enfoque en mejorar la
+                            satisfacción del cliente, fidelizar y construir relaciones a largo plazo, mientras soluciona
+                            problemas técnicos de forma
                             eficiente y proactiva</p>
-                            <div class="conectord">
-                                <div class="circulod"></div>
-                            </div>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,45 +967,47 @@
             <h2>PORTAFOLIO</h2>
             <div class="galeria">
                 <div class="proyecto">
-                    <img src="img/imagen6.jpeg" alt="">
+                    <img src="https://potafolio01.vercel.app/img/imagen6.jpeg" alt="">
                     <div class="overlay">
                         <h3><a href="https://alexizmansilla.github.io/juego-secreto/"
                                 style="color: inherit; text-decoration: none;">Diseño Creativo</a></h3>
                         <p>Juego del número secreto</p>
                     </div>
-                </div><div class="proyecto">
-                    <img src="img/imagen2.jpeg" alt="">
+                </div>
+                <div class="proyecto">
+                    <img src="https://potafolio01.vercel.app/img/imagen2.jpeg" alt="">
                     <div class="overlay">
-                        <h3><a href="https://alexizmansilla.github.io/portafolio2/about.html" style="color: inherit; text-decoration: none;">Diseño
+                        <h3><a href="https://alexizmansilla.github.io/portafolio2/about.html"
+                                style="color: inherit; text-decoration: none;">Diseño
                                 Creativo</a></h3>
                         <p>Portafolio</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <img src="img/imagen3.jpeg" alt="">
+                    <img src="https://potafolio01.vercel.app/img/imagen3.jpeg" alt="">
                     <div class="overlay">
                         <h3><a href="https://alexizmansilla.github.io/Encriptador-de-text/"
-                            style="color: inherit; text-decoration: none;">Diseño Creativo</a></h3>
+                                style="color: inherit; text-decoration: none;">Diseño Creativo</a></h3>
                         <p>Encriptado de texto</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <img src="img/imagen4.jpeg" alt="">
+                    <img src="https://potafolio01.vercel.app/img/imagen4.jpeg" alt="">
                     <div class="overlay">
                         <h3><a href="https://alexizmansilla.github.io/AluraMidi-Curso-main/"
-                            style="color:inherit; text-decoration:none;">Diseño Creativo</a></h3>
+                                style="color:inherit; text-decoration:none;">Diseño Creativo</a></h3>
                         <p>Alura midi</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <img src="img/imagen5.jpeg" alt="">
+                    <img src="https://potafolio01.vercel.app/img/imagen5.jpeg" alt="">
                     <div class="overlay">
                         <h3>Diseño Creativo</h3>
                         <p>Fotografía</p>
                     </div>
                 </div>
                 <div class="proyecto">
-                    <img src="img/imagen7.jpeg" alt="">
+                    <img src="https://potafolio01.vercel.app/img/imagen7.jpeg" alt="">
                     <div class="overlay">
                         <h3>Diseño Creativo</h3>
                         <p>Fotografía</p>
@@ -282,24 +1024,30 @@
             <div class="fila">
                 <!-- Formulario -->
                 <div class="col">
-                    <input type="text" placeholder="Tú Nombre">
-                    <input type="text" placeholder="Número telefónico">
-                    <input type="text" placeholder="Dirección de correo">
-                    <input type="text" placeholder="Tema">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Mensaje"></textarea>
-                    <button>Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
-                        <span class="overlay"></span>
-                    </button>
+                    <form id="contactForm">
+                        <input type="text" id="nombre" placeholder="Tú Nombre" required>
+                        <span class="error-message" id="errorNombre">Por favor, ingresa tu nombre</span>
+
+                        <input type="tel" id="telefono" placeholder="Número telefónico" required>
+                        <span class="error-message" id="errorTelefono">Por favor, ingresa tu teléfono</span>
+
+                        <input type="email" id="email" placeholder="Dirección de correo">
+
+                        <input type="text" id="tema" placeholder="Tema">
+
+                        <textarea id="mensaje" cols="30" rows="10" placeholder="Mensaje" required></textarea>
+                        <span class="error-message" id="errorMensaje">Por favor, escribe un mensaje</span>
+
+                        <button type="submit">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Enviar Mensaje
+                        </button>
+                    </form>
                 </div>
                 <!-- Mapa -->
                 <div class="col">
-                    <img src="img/ubicacion2.png" alt="">
-                    <div class="info">
-                        <ul>
-                            <li>
-                            <i class="fa-solid fa-envelope"></i>Email: aggroman777@gmail.com
-                            </li>
-                        </ul>
+                    <div class="map-container">
+                        <img src="https://potafolio01.vercel.app/img/ubicacion2.png" alt="Mapa de ubicación">
                     </div>
                 </div>
             </div>
@@ -307,22 +1055,115 @@
     </section>
 
     <!-- footer -->
-    <footer class="footer"><p>Desarrollado por :</p>
-        <img src="img/logo.png" alt="">
-        <div class="overlay">
+    <footer class="footer">
+        <p>Desarrollado por :</p>
+        <img src="https://potafolio01.vercel.app/img/logo.png" alt="">
         <a href="#inicio" class="arriba">
-        <i class="fa-solid fa-angles-up"></i>
+            <i class="fa-solid fa-angles-up"></i>
         </a>
         <div class="redes">
-            
-            <a href="https://m.facebook.com/profile.php?id=61566348713672"><i class="fa-brands fa-facebook-f fa-shake" style="--fa-beat-scale: 1.0;"></i>
-            <a href="https://github.com/AlexizMansilla"><i class="fa-brands fa-github fa-shake" style="--fa-beat-scale: 1.0;"></i>
-            <a href="https://www.instagram.com/dereckstonilich/"><i class="fa-brands fa-instagram fa-shake" style="--fa-beat-scale: 1.0;"></i>
-            <a href="https://www.linkedin.com/in/alexis-mansilla-656aa8313/"><i class="fa-brands fa-linkedin-in fa-shake" style="--fa-beat-scale: 1.0;"></i>
-            <a href="#"><i class="fa-solid fa-rss fa-shake" style="--fa-beat-scale: 1.0;"></i>
+            <a href="https://m.facebook.com/profile.php?id=61566348713672"><i
+                    class="fa-brands fa-facebook-f fa-shake"></i></a>
+            <a href="https://github.com/AlexizMansilla"><i class="fa-brands fa-github fa-shake"></i></a>
+            <a href="https://www.instagram.com/dereckstonilich/"><i class="fa-brands fa-instagram fa-shake"></i></a>
+            <a href="https://www.linkedin.com/in/alexis-mansilla-656aa8313/"><i
+                    class="fa-brands fa-linkedin-in fa-shake"></i></a>
         </div>
     </footer>
-    
-    <script src="script.js"></script>
+
+    <script>
+        // Menú responsive
+        let menuVisible = false;
+        function mostrarOcultarMenu() {
+            if (menuVisible) {
+                document.getElementById("nav").classList = "";
+                menuVisible = false;
+            } else {
+                document.getElementById("nav").classList = "responsive";
+                menuVisible = true;
+            }
+        }
+
+        function seleccionar() {
+            document.getElementById("nav").classList = "";
+            menuVisible = false;
+        }
+
+        // Formulario WhatsApp
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Limpiar errores previos
+            document.querySelectorAll('.error-message').forEach(msg => msg.classList.remove('show'));
+            document.querySelectorAll('input, textarea').forEach(input => input.classList.remove('error'));
+
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const tema = document.getElementById('tema').value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            // Validación
+            let isValid = true;
+
+            if (!nombre) {
+                document.getElementById('nombre').classList.add('error');
+                document.getElementById('errorNombre').classList.add('show');
+                isValid = false;
+            }
+
+            if (!telefono) {
+                document.getElementById('telefono').classList.add('error');
+                document.getElementById('errorTelefono').classList.add('show');
+                isValid = false;
+            }
+
+            if (!mensaje) {
+                document.getElementById('mensaje').classList.add('error');
+                document.getElementById('errorMensaje').classList.add('show');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Número de WhatsApp configurado
+            const numeroWhatsApp = '56940693125';
+
+            // Construir el mensaje para WhatsApp
+            let mensajeWhatsApp = `*Nuevo mensaje de contacto*%0A%0A`;
+            mensajeWhatsApp += `*Nombre:* ${nombre}%0A`;
+            mensajeWhatsApp += `*Teléfono:* ${telefono}%0A`;
+
+            if (email) {
+                mensajeWhatsApp += `*Email:* ${email}%0A`;
+            }
+
+            if (tema) {
+                mensajeWhatsApp += `*Tema:* ${tema}%0A`;
+            }
+
+            mensajeWhatsApp += `%0A*Mensaje:*%0A${mensaje}`;
+
+            // Crear URL de WhatsApp
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
+
+            // Abrir WhatsApp en nueva pestaña
+            window.open(urlWhatsApp, '_blank');
+        });
+
+        // Remover error al escribir
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', function () {
+                this.classList.remove('error');
+                const errorId = 'error' + this.id.charAt(0).toUpperCase() + this.id.slice(1);
+                const errorMsg = document.getElementById(errorId);
+                if (errorMsg) {
+                    errorMsg.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
